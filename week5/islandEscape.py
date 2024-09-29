@@ -156,7 +156,7 @@ def makeSoup():
 
 
 window = tk.Tk()
-window.geometry("1920x1080")
+window.geometry("1500x800")
 canvas = tk.Canvas(window, width=1980, height=1080, bg="lightblue")
 canvas.create_rectangle(100,100,400,700, fill="yellow")
 canvas.create_rectangle(1100,100,1400,700, fill="grey")
