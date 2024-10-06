@@ -76,22 +76,22 @@ def getNewMonkeyK():
 def getNewMonkeyKHandle():
     threading.Thread(target=getNewMonkeyK).start()
 
-def move(thing, x, y, person):
-    if thing["x"] != x or thing["y"] != y:
-        if thing["x"] < x:
-            thing["x"] += 1
-        elif thing["x"] > x:
-            thing["x"] -= 1
-        if thing["y"] < y:
-            thing["y"] += 1
-        elif thing["y"] > y:
-            thing["y"] -= 1
-        thing["label"].place(x=thing["x"], y=thing["y"])
-        window.after(5, lambda: move(thing, x, y, person))
+def move(monkey, x, y, person):
+    if monkey["x"] != x or monkey["y"] != y:
+        if monkey["x"] < x:
+            monkey["x"] += 1
+        elif monkey["x"] > x:
+            monkey["x"] -= 1
+        if monkey["y"] < y:
+            monkey["y"] += 1
+        elif monkey["y"] > y:
+            monkey["y"] -= 1
+        monkey["label"].place(x=monkey["x"], y=monkey["y"])
+        window.after(5, lambda: move(monkey, x, y, person))
     elif person == "ernesti":
-        threading.Thread(target=digE, args=(thing,)).start()
+        threading.Thread(target=digE, args=(monkey,)).start()
     elif person == "kernesti":
-        threading.Thread(target=digK, args=(thing,)).start()
+        threading.Thread(target=digK, args=(monkey,)).start()
 
 def digE(monkey):
     diggingTime = 1
