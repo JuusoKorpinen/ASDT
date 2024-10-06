@@ -62,18 +62,15 @@ def moveMonkey(monkey, sender, word):
         goal(monkey, sender, word)
 
 def goal(monkey, sender, word):
-    monkeyX = monkey.winfo_x()
-    if monkeyX >= 1100:
-        if sender == "ernesti":
-            wordListE.insert(tk.END, word)
-            ernesti["monkeysArrived"] += 1
-            updateStats()
-        elif sender == "kernesti":
-            wordListK.insert(tk.END, word)
-            kernesti["monkeysArrived"] += 1
-            updateStats()
-        monkey.destroy()
-        playSound("goal")
+    if sender == "ernesti":
+        wordListE.insert(tk.END, word)
+        ernesti["monkeysArrived"] += 1
+    elif sender == "kernesti":
+        wordListK.insert(tk.END, word)
+        kernesti["monkeysArrived"] += 1
+    updateStats()
+    monkey.destroy()
+    playSound("goal")
 
 def playSound(sound):
     if sound == "goal":
