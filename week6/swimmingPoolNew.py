@@ -1,5 +1,4 @@
 import tkinter as tk
-import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import numpy as np
@@ -17,7 +16,7 @@ ernestiOja = np.ones(shape=(100,1))
 kernestiOja = np.ones(shape=(100,1))
 monkeys = []
 
-#Functions here
+#Funktiot tähän
 def createMonkey(amount):
     for i in range(amount):
         monkey = {
@@ -130,12 +129,12 @@ def digK(monkey):
 
 def fillOjat():
     global monkeys
-    busyMonkeys = [monkey for monkey in monkeys if monkey["status"] == "busy"] #Katotaan kaikki apinat jotka on töissä ja poistetaan ne
+    busyMonkeys = [monkey for monkey in monkeys if monkey["status"] == "busy"] #Katsoo kaikki apinat jotka on töissä ja poistaa ne
     for monkey in busyMonkeys:
         monkey["label"].destroy()
     monkeys = [monkey for monkey in monkeys if monkey["status"] != "busy"]
 
-    for i in range(len(ernestiOja)): #Käydään läpi matriisi ja täytetään kaikki ykkösillä
+    for i in range(len(ernestiOja)): #Käy läpi matriisin ja täyttää kaikki ykkösillä
         ernestiOja[i][0] = 1
         kernestiOja[i][0] = 1
 
