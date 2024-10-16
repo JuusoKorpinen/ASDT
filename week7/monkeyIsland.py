@@ -124,6 +124,7 @@ def swim(monkey, direction):
         elif direction == "left":
             monkey["x"] -= 5
         monkey["label"].place(x=monkey["x"], y=monkey["y"])
+        winsound.Beep(200, 50)
         time.sleep(1)
 
     for item in canvas.find_overlapping(monkey["x"],monkey["y"],monkey["x"] + 10,monkey["y"] + 10): #Katotaan mihin se apina törmäs
@@ -143,6 +144,7 @@ def swim(monkey, direction):
 def islandObserver(): #Tarkkailee jokaista saarta
     while True:
         for island in islands:
+            sendMonkey(island)
             for monkey in island["monkeys"]:
                 if random.random() < 0.01: #Yhen prosentin mahdollisuus kuolla nauruun
                     print("Apina kuoli nauruun")
@@ -151,8 +153,7 @@ def islandObserver(): #Tarkkailee jokaista saarta
                     island["monkeys"].remove(monkey)
                     updateInfo(island)
                 else: #Jos ei kuole nauruun niin muuten vaan ääntelee
-                    winsound.Beep(random.randint(400,2000), 90)
-            sendMonkey(island)
+                    winsound.Beep(random.randint(400,2000), 50)
         time.sleep(10)
 
 def islandObserverHandle():
